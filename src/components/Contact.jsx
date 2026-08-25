@@ -1,13 +1,9 @@
 import { useState } from 'react'
+import { supabase } from '../lib/supabase'
 
 const FIELD_CLASS =
   'rounded-lg border-[1.5px] border-ink/20 bg-white/80 px-4 py-3.5 text-sm text-ink outline-none placeholder:text-ink/45 focus:border-ink'
 
-/**
- * Netlify détecte les formulaires en scannant le HTML statique au build : un formulaire rendu
- * par React est invisible pour lui. Le formulaire caché de index.html sert de déclaration,
- * et on poste ici les données encodées en urlencoded avec le même `form-name`.
- */
 export default function Contact() {
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState(null)
@@ -18,21 +14,33 @@ export default function Contact() {
     setError(null)
 
     const formData = new FormData(event.target)
-    formData.append('form-name', 'contact')
 
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      })
-      if (!response.ok) throw new Error(`Erreur ${response.status}`)
+    // Honeypot : un bot remplit tous les champs, un humain ne voit pas celui-ci.
+    // On simule un succès pour ne pas lui signaler la détection.
+    if (formData.get('bot-field')) {
       setStatus('sent')
-      event.target.reset()
-    } catch (err) {
-      setError(err.message)
-      setStatus('idle')
+      return
     }
+
+    // Pas de .select() ici : la table n'a qu'une policy INSERT, relire la ligne
+    // échouerait sous RLS.
+    const { error: insertError } = await supabase.from('contact_requests').insert({
+      prenom: formData.get('prenom'),
+      societe: formData.get('societe'),
+      email: formData.get('email'),
+      flotte: formData.get('flotte') || null,
+      message: formData.get('message') || null,
+    })
+
+    if (insertError) {
+      setError("Votre demande n'a pas pu être envoyée. Réessayez ou écrivez-nous directement.")
+      console.error('Insertion contact_requests échouée :', insertError)
+      setStatus('idle')
+      return
+    }
+
+    setStatus('sent')
+    event.target.reset()
   }
 
   return (
@@ -54,42 +62,37 @@ export default function Contact() {
           Merci, votre demande est bien envoyée. Nous revenons vers vous sous 36 h.
         </p>
       ) : (
-        <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-          className="mx-auto flex max-w-[520px] flex-col gap-3.5"
-        >
-          <input type="hidden" name="form-name" value="contact" />
+        <form onSubmit={handleSubmit} className="mx-auto flex max-w-[520px] flex-col gap-3.5">
           <p className="hidden">
             <label>
-              Ne pas remplir : <input name="bot-field" />
+              Ne pas remplir : <input name="bot-field" tabIndex={-1} autoComplete="off" />
             </label>
           </p>
 
           <div className="grid grid-cols-2 gap-3.5 max-md:grid-cols-1">
-            <input type="text" name="prenom" placeholder="Prénom" required className={FIELD_CLASS} />
-            <input type="text" name="societe" placeholder="Société" required className={FIELD_CLASS} />
+            <input type="text" name="prenom" placeholder="Prénom" required maxLength={100} className={FIELD_CLASS} />
+            <input type="text" name="societe" placeholder="Société" required maxLength={200} className={FIELD_CLASS} />
           </div>
           <input
             type="email"
             name="email"
             placeholder="Email professionnel"
             required
+            maxLength={320}
             className={FIELD_CLASS}
           />
           <input
             type="text"
             name="flotte"
             placeholder="Nombre de véhicules dans votre flotte"
+            maxLength={100}
             className={FIELD_CLASS}
           />
           <textarea
             name="message"
             placeholder="Votre message (optionnel)"
             rows="3"
+            maxLength={5000}
             className={`${FIELD_CLASS} resize-y`}
           />
 
