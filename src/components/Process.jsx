@@ -7,7 +7,7 @@ const STEPS = [
   {
     n: 'ÉTAPE 02',
     title: 'Rapport SparkFleet',
-    text: 'Vous recevez le SparkScore de chaque véhicule et votre plan de transition sur 36 mois sous 36 heures.',
+    text: 'Vous recevez le SparkScore de chaque véhicule et votre plan de transition sur 36 mois.',
   },
   {
     n: 'ÉTAPE 03',

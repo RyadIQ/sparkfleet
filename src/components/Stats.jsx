@@ -1,7 +1,7 @@
 const STATS = [
   { num: '30 %', label: 'de réduction des coûts de flotte en moyenne sur 3 ans' },
   { num: '100 %', label: 'indépendant, sans lien avec un constructeur ou opérateur' },
-  { num: '36 h', label: 'pour recevoir votre rapport complet et votre plan d’action' },
+  { num: '1', label: 'interlocuteur unique, disponible et proche de vous' },
 ]
 
 export default function Stats() {

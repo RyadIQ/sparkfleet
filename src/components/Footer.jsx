@@ -4,25 +4,30 @@ const LINK_CLASS = 'text-[13px] transition-colors hover:text-paper'
 
 export default function Footer() {
   return (
-    <footer className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 bg-ink px-12 py-7 text-[#888] max-md:flex-col max-md:px-5 max-md:py-6 max-md:text-center">
-      <a href="#" className="flex items-center">
-        <Logo tone="light" className="h-7 w-auto" />
-      </a>
+    <footer className="bg-ink px-12 py-10 text-[#888] max-md:px-5 max-md:py-8">
+      <div className="flex flex-wrap items-start justify-between gap-x-12 gap-y-8 max-md:flex-col max-md:items-center max-md:text-center">
+        <div className="flex flex-col gap-3">
+          <a href="#" className="flex items-center max-md:justify-center">
+            <Logo tone="light" className="h-11 w-auto" />
+          </a>
+          <p className="text-[13px]">Entreprise française basée à Toulouse</p>
+          <p className="text-[13px]">Fleet manager externalisé · France entière</p>
+        </div>
 
-      <div className="flex items-center gap-x-5 gap-y-1 max-md:flex-col">
-        <a href="mailto:bonjour@sparkfleet.fr" className={LINK_CLASS}>
-          bonjour@sparkfleet.fr
-        </a>
-        <span aria-hidden="true" className="text-[13px] opacity-40 max-md:hidden">
-          ·
-        </span>
-        <a href="tel:+33652045448" className={LINK_CLASS}>
-          06 52 04 54 48
-        </a>
+        <div className="flex flex-col gap-2 max-md:items-center">
+          <p className="label-mono text-[#666]">Nous contacter</p>
+          <a href="tel:+33652045448" className={LINK_CLASS}>
+            06 52 04 54 48
+          </a>
+          <a href="mailto:bonjour@sparkfleet.fr" className={LINK_CLASS}>
+            bonjour@sparkfleet.fr
+          </a>
+        </div>
       </div>
 
-      <p className="text-[13px]">Fleet manager externalisé · Toulouse et France entière</p>
-      <p className="text-[13px]">© 2026 SparkFleet. Tous droits réservés.</p>
+      <div className="mt-8 border-t border-[#1a1b1d] pt-6 text-[13px] max-md:text-center">
+        © 2026 SparkFleet. Tous droits réservés.
+      </div>
     </footer>
   )
 }

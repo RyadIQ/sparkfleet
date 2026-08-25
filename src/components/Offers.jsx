@@ -1,42 +1,30 @@
 const OFFERS = [
   {
+    name: 'Découverte',
+    title: 'SparkFleet Check',
+    price: 'Gratuit',
+    desc: 'Première analyse de 30 minutes de votre flotte. Vous donnez le nombre de véhicules, motorisations, kilométrage, échéances et usages. Nous identifions les véhicules qui méritent une analyse approfondie.',
+    cta: 'Réserver mon Check',
+  },
+  {
     name: 'Diagnostic',
     title: 'SparkFleet Audit',
-    desc: 'Un état des lieux complet de votre flotte avec le SparkScore de chaque véhicule et un plan d’action sur 36 mois.',
-    features: [
-      'Analyse véhicule par véhicule',
-      'SparkScore sur 100 pour chaque véhicule',
-      'Calcul du TCO sur 3 ans',
-      'Plan de transition personnalisé',
-      'Identification des aides disponibles',
-    ],
+    price: 'à partir de 790 € HT',
+    desc: 'Analyse complète véhicule par véhicule avec SparkScore sur 100, calcul du TCO, identification des aides et recommandations concrètes.',
+  },
+  {
+    name: 'Transition',
+    title: 'SparkFleet Transition',
+    price: 'à partir de 1 490 € HT',
+    badge: 'Le plus choisi',
+    featured: true,
+    desc: 'Plan complet sur 36 mois : sélection des véhicules, TCO détaillé, montage financier, calendrier de renouvellement, stratégie de recharge, politique automobile et recommandations opérationnelles.',
   },
   {
     name: 'Pilotage',
     title: 'SparkFleet Manager',
-    desc: 'Votre fleet manager externalisé. Nous pilotons votre flotte au quotidien, de A à Z, sans que vous ayez à vous en occuper.',
-    badge: 'Le plus choisi',
-    featured: true,
-    features: [
-      'Audit inclus au démarrage',
-      'Gestion des renouvellements',
-      'Sélection et négociation des offres',
-      'Suivi des contrats et des échéances',
-      'Coordination des installations',
-      'Reporting mensuel',
-    ],
-  },
-  {
-    name: 'Premium',
-    title: 'SparkFleet Pro',
-    desc: 'Pour les flottes de 20 véhicules et plus avec des enjeux réglementaires, RSE et de performance avancés.',
-    features: [
-      'Tout SparkFleet Manager',
-      'Interlocuteur dédié senior',
-      'Reporting RSE trimestriel',
-      'Veille réglementaire permanente',
-      'Formation des conducteurs incluse',
-    ],
+    price: 'à partir de 490 € HT/mois',
+    desc: 'Votre interlocuteur flotte au quotidien. Gestion des renouvellements, négociation des contrats, suivi des échéances, coordination des prestataires et reporting régulier.',
   },
 ]
 
@@ -51,15 +39,15 @@ export default function Offers() {
       </p>
       <h2 className="mb-4 text-heading">Un accompagnement adapté à votre flotte.</h2>
       <p className="mb-14 max-w-[540px] text-[17px] leading-[1.7] text-mid">
-        De l’analyse ponctuelle au pilotage complet, SparkFleet s’adapte à la taille de votre parc et
-        à vos objectifs.
+        Du premier échange gratuit au pilotage complet, SparkFleet s’adapte à la taille de votre
+        parc et à vos objectifs.
       </p>
 
-      <div className="grid grid-cols-3 gap-5 max-md:grid-cols-1">
+      <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-md:grid-cols-1">
         {OFFERS.map((offer) => (
           <div
             key={offer.title}
-            className={`relative flex flex-col gap-5 rounded-[10px] border-[1.5px] px-7 py-9 transition-colors ${
+            className={`relative flex flex-col gap-4 rounded-[10px] border-[1.5px] px-7 py-9 transition-colors ${
               offer.featured
                 ? 'border-ink bg-ink text-paper'
                 : 'border-line bg-paper hover:border-spark-dk'
@@ -70,27 +58,24 @@ export default function Offers() {
                 {offer.badge}
               </span>
             )}
-            <p
-              className={`label-mono tracking-[0.1em] ${offer.featured ? 'text-[#888]' : 'text-mid'}`}
-            >
+
+            <p className={`label-mono tracking-[0.1em] ${offer.featured ? 'text-[#888]' : 'text-mid'}`}>
               {offer.name}
             </p>
-            <p className="text-[22px] font-bold tracking-[-0.02em]">{offer.title}</p>
+            <p className="text-[22px] leading-tight font-bold tracking-[-0.02em]">{offer.title}</p>
+
+            <p
+              className={`font-mono text-[15px] font-bold ${
+                offer.featured ? 'text-spark' : 'text-spark-dk'
+              }`}
+            >
+              {offer.price}
+            </p>
+
             <p className={`text-sm leading-[1.65] ${offer.featured ? 'text-[#aaa]' : 'text-mid'}`}>
               {offer.desc}
             </p>
-            <ul className="flex list-none flex-col gap-2.5">
-              {offer.features.map((feature) => (
-                <li
-                  key={feature}
-                  className={`flex items-start gap-2.5 text-sm before:mt-px before:shrink-0 before:font-mono before:text-xs before:content-['→'] ${
-                    offer.featured ? 'before:text-spark' : 'before:text-spark-dk'
-                  }`}
-                >
-                  {feature}
-                </li>
-              ))}
-            </ul>
+
             <a
               href="#contact"
               className={`mt-auto block rounded-[7px] border-[1.5px] px-5 py-3.5 text-center text-sm font-semibold transition-all ${
@@ -99,7 +84,7 @@ export default function Offers() {
                   : 'border-line text-ink hover:border-ink'
               }`}
             >
-              Nous contacter
+              {offer.cta ?? 'Nous contacter'}
             </a>
           </div>
         ))}
