@@ -7,18 +7,23 @@ import Process from '../components/Process'
 import SparkScoreTable from '../components/SparkScoreTable'
 import Stats from '../components/Stats'
 import Why from '../components/Why'
+import { usePageMeta } from '../lib/usePageMeta'
 
 export default function Landing() {
+  usePageMeta()
+
   return (
     <>
       <Nav />
-      <Hero />
-      <Stats />
-      <Why />
-      <Offers />
-      <SparkScoreTable />
-      <Process />
-      <Contact />
+      <main>
+        <Hero />
+        <Stats />
+        <Why />
+        <Offers />
+        <SparkScoreTable />
+        <Process />
+        <Contact />
+      </main>
       <Footer />
     </>
   )

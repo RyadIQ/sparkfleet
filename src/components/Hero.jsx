@@ -30,12 +30,12 @@ const VERDICT_TONES = {
 
 export default function Hero() {
   return (
-    <div className="grid min-h-screen grid-cols-2 pt-[72px] max-md:grid-cols-1 max-sm:pt-16">
+    <section aria-labelledby="hero-titre" className="grid min-h-screen grid-cols-2 pt-[72px] max-md:grid-cols-1 max-sm:pt-16">
       <div className="flex flex-col justify-center border-r border-line px-16 py-20 max-md:border-r-0 max-md:px-5 max-md:pt-15 max-md:pb-10">
         <p className="label-mono mb-8 inline-flex items-center gap-2 text-mid before:inline-block before:h-px before:w-5 before:bg-mid before:content-['']">
           Fleet manager externalisé
         </p>
-        <h1 className="mb-6 text-display">
+        <h1 id="hero-titre" className="mb-6 text-display">
           Votre flotte.
           <br />
           <mark className="rounded bg-spark px-1.5 text-ink">Optimisée.</mark>
@@ -84,6 +84,6 @@ export default function Hero() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

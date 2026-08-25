@@ -6,7 +6,7 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <div className="grid grid-cols-3 bg-ink max-md:grid-cols-1">
+    <section aria-label="Chiffres clés" className="grid grid-cols-3 bg-ink max-md:grid-cols-1">
       {STATS.map((stat) => (
         <div
           key={stat.num}
@@ -16,6 +16,6 @@ export default function Stats() {
           <p className="text-[13px] leading-[1.5] text-[#888]">{stat.label}</p>
         </div>
       ))}
-    </div>
+    </section>
   )
 }

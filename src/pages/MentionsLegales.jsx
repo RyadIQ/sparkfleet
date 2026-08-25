@@ -3,6 +3,7 @@ import LegalLayout from '../components/LegalLayout'
 export default function MentionsLegales() {
   return (
     <LegalLayout
+      path="/mentions-legales"
       title="Mentions légales"
       intro="Informations relatives à l’éditeur et à l’hébergeur du site sparkfleet.fr, conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique."
     >

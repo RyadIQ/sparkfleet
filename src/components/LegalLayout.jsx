@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { usePageMeta } from '../lib/usePageMeta'
 import Footer from './Footer'
 import Logo from './Logo'
 
@@ -15,7 +16,9 @@ const PROSE_CLASS = [
   '[&_dd]:text-ink max-sm:[&_dd]:mb-3',
 ].join(' ')
 
-export default function LegalLayout({ title, intro, children }) {
+export default function LegalLayout({ title, intro, path, children }) {
+  usePageMeta({ title: `${title} | SparkFleet`, description: intro, path })
+
   return (
     <div className="min-h-screen bg-paper">
       <header className="border-b border-line bg-paper/95 px-12 py-[18px] backdrop-blur-[10px] max-md:px-5">

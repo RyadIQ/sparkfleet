@@ -35,7 +35,7 @@ export default function Why() {
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-px overflow-hidden rounded-xl border border-line bg-line">
         {CARDS.map((card) => (
           <div key={card.title} className="flex flex-col gap-3.5 bg-white px-8 py-9">
-            <div className="text-[28px]">{card.icon}</div>
+            <div aria-hidden="true" className="text-[28px]">{card.icon}</div>
             <h3 className="text-[17px] font-semibold">{card.title}</h3>
             <p className="text-sm leading-[1.65] text-mid">{card.text}</p>
           </div>

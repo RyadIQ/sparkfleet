@@ -3,6 +3,7 @@ import LegalLayout from '../components/LegalLayout'
 export default function Confidentialite() {
   return (
     <LegalLayout
+      path="/confidentialite"
       title="Politique de confidentialité"
       intro="SparkFleet s’engage à protéger les données personnelles qui lui sont confiées. Cette politique décrit les données collectées via ce site, leur usage et les droits dont vous disposez, conformément au Règlement général sur la protection des données (RGPD)."
     >

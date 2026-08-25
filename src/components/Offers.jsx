@@ -62,7 +62,7 @@ export default function Offers() {
             <p className={`label-mono tracking-[0.1em] ${offer.featured ? 'text-[#888]' : 'text-mid'}`}>
               {offer.name}
             </p>
-            <p className="text-[22px] leading-tight font-bold tracking-[-0.02em]">{offer.title}</p>
+            <h3 className="text-[22px] leading-tight font-bold tracking-[-0.02em]">{offer.title}</h3>
 
             <p
               className={`font-mono text-[15px] font-bold ${

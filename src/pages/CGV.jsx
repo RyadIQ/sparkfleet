@@ -3,6 +3,7 @@ import LegalLayout from '../components/LegalLayout'
 export default function CGV() {
   return (
     <LegalLayout
+      path="/cgv"
       title="Conditions générales de prestation de services"
       intro="Les présentes conditions régissent les prestations de conseil et de gestion de flotte réalisées par SparkFleet. Elles s’appliquent à toute commande, sauf dérogation écrite acceptée par les deux parties."
     >
