@@ -47,7 +47,7 @@ export default function Confidentialite() {
       <p>
         Les données du formulaire sont stockées chez <strong>Supabase</strong>, sur une infrastructure
         située dans l’Union européenne (Irlande). Elles ne font l’objet d’aucun transfert hors de
-        l’Union européenne. Le site lui-même est hébergé par Netlify, Inc.
+        l’Union européenne. Le site lui-même est hébergé par OVH SAS, à Roubaix (France).
       </p>
 
       <h2>Durée de conservation</h2>

@@ -33,9 +33,9 @@ export default function MentionsLegales() {
       <h2>Hébergeur</h2>
       <dl>
         <dt>Hébergeur</dt>
-        <dd>Netlify, Inc.</dd>
+        <dd>OVH France</dd>
         <dt>Adresse</dt>
-        <dd>512 2nd Street, Suite 200, San Francisco, CA 94107, USA</dd>
+        <dd>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France</dd>
       </dl>
 
       <h2>Propriété intellectuelle</h2>
