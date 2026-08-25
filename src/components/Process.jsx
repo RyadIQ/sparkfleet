@@ -23,7 +23,7 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="processus" className="bg-ink px-12 py-24 text-paper max-md:px-5 max-md:py-15">
+    <section id="processus" className="scroll-mt-20 max-md:scroll-mt-16 bg-ink px-12 py-24 text-paper max-md:px-5 max-md:py-15">
       <p className="label-mono mb-5 flex items-center gap-2 text-[#666] before:inline-block before:h-px before:w-4 before:bg-[#666] before:content-['']">
         Comment ça marche
       </p>

@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-100 flex items-center justify-between border-b border-line bg-paper/95 px-12 py-[18px] backdrop-blur-[10px] max-md:px-5 max-md:py-3.5">
       <a href="#" className="flex items-center">
-        <Logo className="h-9 w-auto" />
+        <Logo className="h-9 w-auto max-sm:h-8" />
       </a>
 
       <ul className="flex list-none gap-8 max-md:hidden">
@@ -25,13 +25,13 @@ export default function Nav() {
         ))}
       </ul>
 
-      <div className="flex items-center gap-4">
-        <Link to="/login" className="text-sm font-medium text-mid transition-colors hover:text-ink">
+      <div className="flex items-center gap-4 max-sm:gap-2.5">
+        <Link to="/login" className="text-sm font-medium text-mid transition-colors hover:text-ink max-sm:text-[13px]">
           Espace membre
         </Link>
         <a
           href="#contact"
-          className="rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-ink-hover"
+          className="rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-ink-hover max-sm:px-3.5 max-sm:py-2 max-sm:text-[13px]"
         >
           Nous contacter
         </a>

@@ -14,7 +14,7 @@ const PILL_TONES = {
 
 export default function SparkScoreTable() {
   return (
-    <section id="sparkscore" className="bg-paper px-12 py-24 max-md:px-5 max-md:py-15">
+    <section id="sparkscore" className="scroll-mt-20 max-md:scroll-mt-16 bg-paper px-12 py-24 max-md:px-5 max-md:py-15">
       <p className="label-mono mb-5 flex items-center gap-2 text-mid before:inline-block before:h-px before:w-4 before:bg-mid before:content-['']">
         SparkScore
       </p>
@@ -31,7 +31,7 @@ export default function SparkScoreTable() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+          <table className="w-full min-w-[680px] border-collapse">
             <thead>
               <tr>
                 {['Véhicule', 'Usage', 'SparkScore', 'Recommandation SparkFleet'].map((header) => (

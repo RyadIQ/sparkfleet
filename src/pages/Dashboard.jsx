@@ -89,7 +89,7 @@ export default function Dashboard() {
 
         <Panel title="Suivi de flotte" subtitle={`${FLEET.length} véhicules`}>
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
+            <table className="w-full min-w-[640px] border-collapse">
               <thead>
                 <tr>
                   {['Véhicule', 'Usage', 'SparkScore', 'Prochaine échéance'].map((header) => (

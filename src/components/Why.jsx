@@ -23,7 +23,7 @@ const CARDS = [
 
 export default function Why() {
   return (
-    <section id="pourquoi" className="px-12 py-24 max-md:px-5 max-md:py-15">
+    <section id="pourquoi" className="scroll-mt-20 max-md:scroll-mt-16 px-12 py-24 max-md:px-5 max-md:py-15">
       <p className="label-mono mb-5 flex items-center gap-2 text-mid before:inline-block before:h-px before:w-4 before:bg-mid before:content-['']">
         Pourquoi SparkFleet
       </p>

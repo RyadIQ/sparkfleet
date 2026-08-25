@@ -30,7 +30,7 @@ const VERDICT_TONES = {
 
 export default function Hero() {
   return (
-    <div className="grid min-h-screen grid-cols-2 pt-[72px] max-md:grid-cols-1">
+    <div className="grid min-h-screen grid-cols-2 pt-[72px] max-md:grid-cols-1 max-sm:pt-16">
       <div className="flex flex-col justify-center border-r border-line px-16 py-20 max-md:border-r-0 max-md:px-5 max-md:pt-15 max-md:pb-10">
         <p className="label-mono mb-8 inline-flex items-center gap-2 text-mid before:inline-block before:h-px before:w-5 before:bg-mid before:content-['']">
           Fleet manager externalisé
@@ -68,9 +68,9 @@ export default function Hero() {
         {VEHICLES.map((vehicle) => (
           <div
             key={vehicle.model}
-            className="flex items-center justify-between gap-4 rounded-[10px] border border-line bg-white px-6 py-5"
+            className="flex items-center justify-between gap-4 rounded-[10px] border border-line bg-white px-6 py-5 max-sm:flex-wrap max-sm:gap-3 max-sm:px-5"
           >
-            <div className="flex-1">
+            <div className="flex-1 max-sm:w-full max-sm:flex-none">
               <p className="text-[13px] font-semibold">{vehicle.model}</p>
               <p className="mt-0.5 text-xs text-mid">{vehicle.detail}</p>
             </div>

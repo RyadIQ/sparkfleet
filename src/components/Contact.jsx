@@ -61,7 +61,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-spark-dk bg-spark px-12 py-24 max-md:px-5 max-md:py-15"
+      className="scroll-mt-20 max-md:scroll-mt-16 border-t border-spark-dk bg-spark px-12 py-24 max-md:px-5 max-md:py-15"
     >
       <div className="mx-auto max-w-[1040px]">
         <div className="text-center">
@@ -77,9 +77,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] items-start gap-8 text-left max-md:grid-cols-1">
           {/* Coordonnées d'abord dans le DOM : elles passent au-dessus du formulaire en mobile. */}
-          <div className="flex flex-col gap-4 rounded-xl border border-ink/15 bg-ink/[0.06] p-7">
+          <div className="flex flex-col gap-4 rounded-xl border border-ink/15 bg-ink/[0.06] p-7 max-sm:p-5">
             <div>
-              <p className="label-mono mb-2 text-ink/50">Parler à un humain</p>
+              <p className="label-mono mb-2 text-ink/50">On vous répond</p>
               <p className="text-[19px] leading-snug font-bold tracking-[-0.02em] text-ink">
                 Appelez-nous directement.
               </p>
@@ -104,8 +104,7 @@ export default function Contact() {
             ))}
 
             <p className="text-sm leading-[1.6] text-ink/65">
-              Un seul interlocuteur, du premier appel au pilotage de votre flotte. Basés à Toulouse,
-              nous intervenons partout en France.
+              Un seul interlocuteur, du premier appel au pilotage de votre flotte.
             </p>
           </div>
 
@@ -122,13 +121,13 @@ export default function Contact() {
               </p>
 
               <div className="grid grid-cols-2 gap-3.5 max-md:grid-cols-1">
-                <input type="text" name="prenom" placeholder="Prénom" required maxLength={100} className={FIELD_CLASS} />
+                <input type="text" name="prenom" placeholder="Nom" required maxLength={100} className={FIELD_CLASS} />
                 <input type="text" name="societe" placeholder="Société" required maxLength={200} className={FIELD_CLASS} />
               </div>
               <input
                 type="email"
                 name="email"
-                placeholder="Email professionnel"
+                placeholder="Email"
                 required
                 maxLength={320}
                 className={FIELD_CLASS}
@@ -142,7 +141,7 @@ export default function Contact() {
               />
               <textarea
                 name="message"
-                placeholder="Votre message (optionnel)"
+                placeholder="Votre message"
                 rows="3"
                 maxLength={5000}
                 className={`${FIELD_CLASS} resize-y`}
