@@ -1,38 +1,59 @@
-import { useEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
+
+// Géométrie source du mark (hexagone + éclair), en unités du viewBox d'origine.
+const MARK_LEFT = 9
+const CONTENT_TOP = 4
+const CONTENT_HEIGHT = 66
+const FALLBACK_VIEWBOX = `0 ${CONTENT_TOP} 360 ${CONTENT_HEIGHT}`
 
 /**
  * Logo SparkFleet. `tone` bascule la couleur du texte (nav sur paper, footer sur ink).
  *
- * Le trait jaune doit couvrir exactement « Fleet ». Sa largeur dépend des métriques
- * de Space Grotesk, donc on la mesure sur le tspan rendu plutôt que de la coder en dur :
- * une valeur fixe déborde dès que la police de repli est utilisée (avant chargement du
- * webfont, ou si Google Fonts est bloqué).
+ * Deux dimensions sont mesurées au lieu d'être codées en dur, parce qu'elles dépendent
+ * des métriques de Space Grotesk — donc de son chargement effectif :
+ *  - la largeur du trait jaune, qui doit couvrir exactement « Fleet » ;
+ *  - la largeur du viewBox, qui doit s'arrêter à la fin du texte. Un viewBox trop
+ *    large laisse du vide à droite et le logo paraît décalé à gauche dès qu'on le
+ *    centre (cas du footer en mobile).
  */
 export default function Logo({ tone = 'ink', className = '' }) {
+  const textRef = useRef(null)
   const fleetRef = useRef(null)
-  const [bar, setBar] = useState(null)
+  const [metrics, setMetrics] = useState(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const measure = () => {
-      const el = fleetRef.current
-      if (!el) return
+      const text = textRef.current
+      const fleet = fleetRef.current
+      if (!text || !fleet) return
       try {
-        setBar({ x: el.getStartPositionOfChar(0).x, width: el.getComputedTextLength() })
+        const barX = fleet.getStartPositionOfChar(0).x
+        const barWidth = fleet.getComputedTextLength()
+        const bbox = text.getBBox()
+        // Marge droite symétrique de la marge gauche du mark.
+        const right = Math.max(bbox.x + bbox.width, barX + barWidth) + MARK_LEFT
+        setMetrics({ barX, barWidth, width: right })
       } catch {
-        // Le tspan n'est pas encore rendu : la mesure post-chargement des polices suffira.
+        // Pas encore rendu : la mesure post-chargement des polices prendra le relais.
       }
     }
 
     measure()
-    // Le webfont change les métriques : on remesure une fois qu'il est chargé.
     document.fonts?.ready.then(measure)
   }, [])
 
   return (
-    <svg viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="SparkFleet">
+    <svg
+      viewBox={metrics ? `0 ${CONTENT_TOP} ${metrics.width} ${CONTENT_HEIGHT}` : FALLBACK_VIEWBOX}
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      role="img"
+      aria-label="SparkFleet"
+    >
       <polygon points="32,10 55,23 55,51 32,64 9,51 9,23" fill="#F5C842" />
       <polygon points="36,17 23,42 33,42 27,63 43,38 33,38 38,17" fill="#0A0B0D" />
       <text
+        ref={textRef}
         x="68"
         y="52"
         fontFamily="'Space Grotesk',Arial,sans-serif"
@@ -46,7 +67,9 @@ export default function Logo({ tone = 'ink', className = '' }) {
           Fleet
         </tspan>
       </text>
-      {bar && <rect x={bar.x} y="59" width={bar.width} height="3" fill="#F5C842" rx="1.5" />}
+      {metrics && (
+        <rect x={metrics.barX} y="59" width={metrics.barWidth} height="3" fill="#F5C842" rx="1.5" />
+      )}
     </svg>
   )
 }

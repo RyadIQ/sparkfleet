@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
 import { supabase } from '../lib/supabase'
+import { usePageMeta } from '../lib/usePageMeta'
 import { useSession } from '../lib/useSession'
 
 const FIELD_CLASS =
@@ -12,6 +13,11 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
   const [submitting, setSubmitting] = useState(false)
+  usePageMeta({
+    title: 'Espace membre | SparkFleet',
+    description: 'Connexion à votre espace membre SparkFleet.',
+    path: '/login',
+  })
   const { session, loading } = useSession()
   const navigate = useNavigate()
   const location = useLocation()

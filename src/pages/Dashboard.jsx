@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Logo from '../components/Logo'
 import { supabase } from '../lib/supabase'
+import { usePageMeta } from '../lib/usePageMeta'
 import { useSession } from '../lib/useSession'
 
 /**
@@ -46,6 +47,11 @@ function Panel({ title, subtitle, children }) {
 }
 
 export default function Dashboard() {
+  usePageMeta({
+    title: 'Tableau de bord | SparkFleet',
+    description: 'Suivi de flotte, rapports et documents SparkFleet.',
+    path: '/dashboard',
+  })
   const { session } = useSession()
 
   return (

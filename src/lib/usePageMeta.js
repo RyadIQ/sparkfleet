@@ -21,7 +21,12 @@ function setMeta(selector, attr, value) {
  */
 export function usePageMeta({ title, description, path } = {}) {
   useEffect(() => {
-    const meta = { ...DEFAULT_META, ...{ title, description, path } }
+    // Un spread écraserait les défauts par les clés undefined : on retombe champ par champ.
+    const meta = {
+      title: title ?? DEFAULT_META.title,
+      description: description ?? DEFAULT_META.description,
+      path: path ?? DEFAULT_META.path,
+    }
 
     document.title = meta.title
     setMeta('meta[name="description"]', 'content', meta.description)
