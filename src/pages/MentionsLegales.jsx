@@ -10,7 +10,7 @@ export default function MentionsLegales() {
       <h2>Éditeur du site</h2>
       <dl>
         <dt>Éditeur</dt>
-        <dd>Ryad Bouharaoua</dd>
+        <dd>SparkFleet</dd>
         <dt>Forme juridique</dt>
         <dd>Entreprise Individuelle (EI)</dd>
         <dt>SIRET</dt>
@@ -28,7 +28,7 @@ export default function MentionsLegales() {
       </dl>
 
       <h2>Directeur de la publication</h2>
-      <p>Ryad Bouharaoua, en qualité d’éditeur du site.</p>
+      <p>Le responsable de publication est l’éditeur du site.</p>
 
       <h2>Hébergeur</h2>
       <dl>

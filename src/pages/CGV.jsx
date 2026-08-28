@@ -9,8 +9,8 @@ export default function CGV() {
     >
       <h2>1. Objet et champ d’application</h2>
       <p>
-        Les présentes conditions générales définissent les modalités selon lesquelles Ryad
-        Bouharaoua, Entreprise Individuelle (EI) exerçant sous le nom commercial SparkFleet, réalise
+        Les présentes conditions générales définissent les modalités selon lesquelles l’éditeur,
+        Entreprise Individuelle (EI) exerçant sous le nom commercial SparkFleet, réalise
         des prestations de conseil, d’audit et de gestion externalisée de flotte automobile au
         bénéfice de clients professionnels. Toute commande implique l’acceptation sans réserve des
         présentes conditions, qui prévalent sur les conditions d’achat du client, sauf accord écrit

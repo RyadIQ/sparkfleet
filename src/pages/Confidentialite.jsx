@@ -9,7 +9,7 @@ export default function Confidentialite() {
     >
       <h2>Responsable du traitement</h2>
       <p>
-        Le responsable du traitement est Ryad Bouharaoua, Entreprise Individuelle (EI), SIRET
+        Le responsable du traitement est l’éditeur du site, Entreprise Individuelle (EI), SIRET
         820 100 402 00040, dont le siège est à Toulouse, France. Contact :{' '}
         <a href="mailto:bonjour@sparkfleet.fr">bonjour@sparkfleet.fr</a>.
       </p>
